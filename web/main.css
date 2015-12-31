@@ -1,0 +1,118 @@
+
+::selection {
+    background: rgba(0, 0, 0, 1);
+    color: white;
+}
+::-moz-selection {
+    background: rgba(0, 0, 0, 1);
+    color: white;
+}
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+h1, h2, h3, h4 {
+    font-weight: 300;
+    line-height: 1.3em;
+}
+h1 {
+    font-size: 48px;
+}
+h2 {
+    font-size: 28px;
+}
+
+.page {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    float: left;
+    color: white;
+}
+.page .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    transition: background 0.5s;
+}
+.page .nav:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.page .nav.prev {
+    top: 0;
+}
+.page .nav.next {
+    bottom: 0;
+}
+.page .nav .icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    width: 56px;
+    height: 56px;
+    border: 6px solid white;
+    border-top: none;
+    border-left: none;
+    opacity: 0.3;
+    transition: transform 0.5s;
+}
+.page .nav.prev .icon {
+    transform: translateY(60px) rotate(-135deg);
+}
+.page .nav.prev:hover .icon {
+    transform: translateY(45px) rotate(-135deg);
+}
+.page .nav.next .icon {
+    transform: translateY(0px) rotate(45deg);
+}
+.page .nav.next:hover .icon {
+    transform: translateY(15px) rotate(45deg);
+}
+
+.page.light {
+    color: rgba(0, 0, 0, 0.7);
+}
+.page.light .nav:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+.page.light .nav .icon {
+    border-color: black;
+}
+
+#page1 {
+    background: white;
+}
+#page2 {
+    background: #009688;
+}
+#page3 {
+    background: #8bc34a;
+}
+
+@media (max-width: 767px) {
+    .page .nav {
+        height: 80px;
+    }
+    .page .nav .icon {
+        width: 32px;
+        height: 32px;
+        border-width: 4px;
+    }
+    .page .nav.prev .icon {
+        transform: translateY(45px) rotate(-135deg);
+    }
+    .page .nav.prev:hover .icon {
+        transform: translateY(30px) rotate(-135deg);
+    }
+    .page .nav.next .icon {
+        transform: translateY(0px) rotate(45deg);
+    }
+    .page .nav.next:hover .icon {
+        transform: translateY(15px) rotate(45deg);
+    }
+}

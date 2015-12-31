@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic">
+    <link rel="stylesheet" href="main.css"/>
+  </head>
+  <body>
+    <section id="page1" class="page light">
+      <a class="nav next" href="#page2">
+        <span class="icon"></span>
+      </a>
+    </section>
+    <section id="page2" class="page">
+      <a class="nav prev" href="#page1">
+        <span class="icon"></span>
+      </a>
+      <a class="nav next" href="#page3">
+        <span class="icon"></span>
+      </a>
+    </section>
+    <section id="page3" class="page">
+      <a class="nav prev" href="#page2">
+        <span class="icon"></span>
+      </a>
+    </section>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
