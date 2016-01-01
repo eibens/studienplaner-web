@@ -1,6 +1,7 @@
 var gulp = require("gulp");
 var browserSync = require("browser-sync");
 var cache = require("gulp-cache");
+var del = require("del");
 var gulpIf = require("gulp-if");
 var imagemin = require("gulp-imagemin");
 var minifyCss = require("gulp-minify-css");
@@ -45,4 +46,13 @@ gulp.task("watch", ["browserSync", "sass"], function(){
   gulp.watch("web/scss/**/*.scss", ["sass"]);
   gulp.watch("web/*.html", browserSync.reload);
   gulp.watch("web/js/**/*.js", browserSync.reload);
+});
+
+gulp.task("clean:dist", function(callback){
+  del(["dist/**/*", "!dist/images", "!dist/images/**/*"], callback);
+});
+
+gulp.task("clean", function(callback) {
+  del("dist");
+  return cache.clearAll(callback);
 });
