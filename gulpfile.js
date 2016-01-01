@@ -5,6 +5,7 @@ var del = require("del");
 var gulpIf = require("gulp-if");
 var imagemin = require("gulp-imagemin");
 var minifyCss = require("gulp-minify-css");
+var runSequence = require("run-sequence");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var useref = require("gulp-useref");
@@ -49,10 +50,25 @@ gulp.task("watch", ["browserSync", "sass"], function(){
 });
 
 gulp.task("clean:dist", function(callback){
-  del(["dist/**/*", "!dist/images", "!dist/images/**/*"], callback);
+  del(["dist/**/*", "!dist/images", "!dist/images/**/*"]);
+  callback();
 });
 
 gulp.task("clean", function(callback) {
   del("dist");
-  return cache.clearAll(callback);
+  cache.clearAll();
+  callback();
+});
+
+gulp.task("default", function(callback) {
+  runSequence(["sass", "browserSync", "watch"],
+    callback
+  );
+});
+
+gulp.task("build", function (callback) {
+  runSequence("clean:dist",
+    ["sass", "useref", "images"],
+    callback
+  );
 });
