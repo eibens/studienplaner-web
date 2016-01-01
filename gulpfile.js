@@ -10,8 +10,8 @@ var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var useref = require("gulp-useref");
 
-gulp.task("sass", function() {
-  return gulp.src("web/scss/**/*.scss")
+gulp.task("build-sass", function() {
+  gulp.src("web/scss/**/*.scss")
     .pipe(sass())
     .pipe(gulp.dest("web/css"))
     .pipe(browserSync.reload({
@@ -19,23 +19,23 @@ gulp.task("sass", function() {
     }));
 });
 
-gulp.task("useref", function(){
-  return gulp.src("web/*.html")
+gulp.task("build-html", function(){
+  gulp.src("web/*.html")
     .pipe(useref())
     .pipe(gulpIf("*.css", minifyCss()))
     .pipe(gulpIf("*.js", uglify()))
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest("build"));
 });
 
-gulp.task("images", function(){
-  return gulp.src("web/images/**/*.+(png|jpg|jpeg|gif|svg)")
+gulp.task("build-images", function(){
+  gulp.src("web/images/**/*.+(png|jpg|jpeg|gif|svg)")
     .pipe(cache(imagemin({
       interlaced: true
     })))
-    .pipe(gulp.dest("dist/images"));
+    .pipe(gulp.dest("build/images"));
 });
 
-gulp.task("browserSync", function() {
+gulp.task("serve", function() {
   browserSync({
     server: {
       baseDir: "web"
@@ -43,32 +43,30 @@ gulp.task("browserSync", function() {
   });
 });
 
-gulp.task("watch", ["browserSync", "sass"], function(){
-  gulp.watch("web/scss/**/*.scss", ["sass"]);
-  gulp.watch("web/*.html", browserSync.reload);
-  gulp.watch("web/js/**/*.js", browserSync.reload);
-});
-
-gulp.task("clean:dist", function(callback){
-  del(["dist/**/*", "!dist/images", "!dist/images/**/*"]);
+gulp.task("clean-fast", function(callback){
+  del(["build/**/*", "!build/images", "!build/images/**/*"]);
   callback();
 });
 
 gulp.task("clean", function(callback) {
-  del("dist");
+  del("build");
   cache.clearAll();
   callback();
 });
 
 gulp.task("default", function(callback) {
-  runSequence(["sass", "browserSync", "watch"],
+  runSequence(["build-sass", "serve"],
     callback
   );
+  gulp.watch("web/images/**", ["build-images"]);
+  gulp.watch("web/scss/**", ["build-sass"]);
+  gulp.watch("web/*.html", browserSync.reload);
+  gulp.watch("web/js/**", browserSync.reload);
 });
 
 gulp.task("build", function (callback) {
-  runSequence("clean:dist",
-    ["sass", "useref", "images"],
+  runSequence("clean-fast",
+    ["build-sass", "build-html", "build-images"],
     callback
   );
 });
