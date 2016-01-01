@@ -1,3 +1,4 @@
+Hyphenator.run();
 
 (function () {
   var pageNav = $(".page .nav");
