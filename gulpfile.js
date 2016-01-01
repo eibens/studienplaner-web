@@ -21,9 +21,9 @@ gulp.task("sass", function() {
 
 gulp.task("useref", function(){
   return gulp.src("web/*.html")
+    .pipe(useref())
     .pipe(gulpIf("*.css", minifyCss()))
     .pipe(gulpIf("*.js", uglify()))
-    .pipe(useref())
     .pipe(gulp.dest("dist"));
 });
 
