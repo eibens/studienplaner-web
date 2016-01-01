@@ -1,6 +1,8 @@
 var gulp = require("gulp");
 var browserSync = require("browser-sync");
+var cache = require("gulp-cache");
 var gulpIf = require("gulp-if");
+var imagemin = require("gulp-imagemin");
 var minifyCss = require("gulp-minify-css");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
@@ -21,6 +23,14 @@ gulp.task("useref", function(){
     .pipe(gulpIf("*.js", uglify()))
     .pipe(useref())
     .pipe(gulp.dest("dist"));
+});
+
+gulp.task("images", function(){
+  return gulp.src("web/images/**/*.+(png|jpg|jpeg|gif|svg)")
+    .pipe(cache(imagemin({
+      interlaced: true
+    })))
+    .pipe(gulp.dest("dist/images"));
 });
 
 gulp.task("browserSync", function() {
