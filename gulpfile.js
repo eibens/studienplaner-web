@@ -57,10 +57,6 @@ gulp.task("build-css", function () {
       browsers: ["last 3 versions"],
       cascade: false
     }))
-    .pipe(gulpIf("*.css", uncss({
-      html: ["web/*.html"],
-      ignore: [".animated"]
-    })))
     .pipe(minifyCss())
     .pipe(csso())
     .pipe(gulp.dest("build"))
