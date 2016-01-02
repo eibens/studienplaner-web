@@ -30,7 +30,8 @@ gulp.task("build-html", function(){
       cascade: false
     })))
     .pipe(gulpIf("*.css", uncss({
-      html: ["web/*.html"]
+      html: ["web/*.html"],
+      ignore: [".animated"]
     })))
     .pipe(gulpIf("*.css", minifyCss()))
     .pipe(gulpIf("*.css", csso()))
