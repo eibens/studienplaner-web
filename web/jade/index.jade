@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
+    title Title
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
+    link(rel="stylesheet", href="styles.css")
+  body
+    section#homepage.page
+      img.wow.logoIn(src="images/logo-3d.png", alt="")
+      h1.wow.fadeIn(data-wow-delay="0.5s")
+        | Studienplaner #{''}
+        b Beta
+      p.wow.fadeIn(data-wow-delay="1.0s")
+        | Verwalte deine Kurse, tracke deine Noten, plane dein Semester.
+        br
+        | Studienplaner ist #{''}
+        strong kostenlos
+        | . #{''}
+        a(href="http://mein.studienplaner.at/") Weiter zum Studienplaner »
+      a.nav.next.wow.fadeIn(data-wow-delay="2.0s", href="#page2")
+        span.icon
+    section#page2.page
+      a.nav.prev(href="#homepage")
+        span.icon
+      a.nav.next(href="#page3")
+        span.icon
+    section#page3.page
+      a.nav.prev(href="#page2")
+        span.icon
+    script(src="scripts.js")

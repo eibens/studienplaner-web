@@ -2,83 +2,105 @@ var gulp = require("gulp");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync");
 var cache = require("gulp-cache");
+var concat = require("gulp-concat");
 var csso = require("gulp-csso");
 var del = require("del");
 var gulpIf = require("gulp-if");
 var imagemin = require("gulp-imagemin");
+var jade = require("gulp-jade");
 var minifyCss = require("gulp-minify-css");
-var runSequence = require("run-sequence");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
-var useref = require("gulp-useref");
 
-gulp.task("build-sass", function() {
-  gulp.src("web/scss/**/*.scss")
-    .pipe(sass())
-    .pipe(gulp.dest("web/css"))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+// Compile assets
+
+gulp.task("build-html", function (callback) {
+  gulp.src("web/jade/**/*.jade")
+    .pipe(jade())
+    .pipe(gulp.dest("build"))
+    .pipe(browserSync.reload({ stream: true }));
+  callback();
 });
 
-gulp.task("build-html", function(){
-  gulp.src("web/*.html")
-    .pipe(useref())
-    .pipe(gulpIf("*.css", autoprefixer({
+gulp.task("build-js", function () {
+  gulp.src([
+    "web/bower_components/jquery/dist/jquery.min.js",
+    "web/bower_components/Hyphenator/Hyphenator.js",
+    "web/bower_components/wow/dist/wow.js",
+    "web/js/**/*.js"
+  ]).pipe(concat("scripts.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest("build"))
+    .pipe(browserSync.reload({ stream: true }));
+});
+
+// FIXME: Pipe through Uncss
+// Uncss depends on the compiled HTML files. If we use Uncss here we have to
+// run "build-html" first. This is bad since browser-sync will reload the page
+// when the HTML changes instead of just injecting the CSS. Maybe use a second
+// task "build-css-uncss" that adds Uncss to the process and is only called
+// in the "build" task.
+//
+//     .pipe(uncss({
+//       html: ["web/*.html"],
+//       ignore: [".animated"]
+//     }))
+//
+gulp.task("build-css", function () {
+  gulp.src([
+    "web/bower_components/wow/css/libs/animate.css",
+    "web/scss/**/*.scss"
+  ]).pipe(gulpIf("*.scss", sass()))
+    .pipe(concat("styles.css"))
+    .pipe(autoprefixer({
       browsers: ["last 3 versions"],
       cascade: false
-    })))
+    }))
     .pipe(gulpIf("*.css", uncss({
       html: ["web/*.html"],
       ignore: [".animated"]
     })))
-    .pipe(gulpIf("*.css", minifyCss()))
-    .pipe(gulpIf("*.css", csso()))
-    .pipe(gulpIf("*.js", uglify()))
-    .pipe(gulp.dest("build"));
+    .pipe(minifyCss())
+    .pipe(csso())
+    .pipe(gulp.dest("build"))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task("build-images", function(){
+gulp.task("build-images", function () {
   gulp.src("web/images/**/*.+(png|jpg|jpeg|gif|svg)")
     .pipe(cache(imagemin({
       interlaced: true
     })))
-    .pipe(gulp.dest("build/images"));
+    .pipe(gulp.dest("build/images"))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task("serve", function() {
-  browserSync({
-    server: {
-      baseDir: "web"
-    }
-  });
-});
+// Clean project
 
-gulp.task("clean-fast", function(callback){
+gulp.task("clean-fast", function (callback) {
   del(["build/**/*", "!build/images", "!build/images/**/*"]);
   callback();
 });
 
-gulp.task("clean", function(callback) {
+gulp.task("clean", function (callback) {
   del("build");
   cache.clearAll();
   callback();
 });
 
-gulp.task("default", function(callback) {
-  runSequence(["build-sass", "serve"],
-    callback
-  );
-  gulp.watch("web/images/**", ["build-images"]);
-  gulp.watch("web/scss/**", ["build-sass"]);
-  gulp.watch("web/*.html", browserSync.reload);
-  gulp.watch("web/js/**", browserSync.reload);
-});
+// Build and serve
 
-gulp.task("build", function (callback) {
-  runSequence("clean-fast",
-    ["build-sass", "build-html", "build-images"],
-    callback
-  );
+gulp.task("build", ["build-html", "build-css", "build-js", "build-images"]);
+
+gulp.task("default", ["build"], function () {
+  browserSync({
+    server: {
+      baseDir: "build"
+    }
+  });
+  gulp.watch("web/images/**", ["build-images"]);
+  gulp.watch("web/jade/**", ["build-html"]);
+  gulp.watch("web/js/**", ["build-js"]);
+  gulp.watch("web/scss/**", ["build-css"]);
 });
