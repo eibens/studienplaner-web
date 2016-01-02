@@ -1,4 +1,5 @@
 var gulp = require("gulp");
+var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync");
 var cache = require("gulp-cache");
 var del = require("del");
@@ -23,6 +24,10 @@ gulp.task("build-html", function(){
   gulp.src("web/*.html")
     .pipe(useref())
     .pipe(gulpIf("*.css", minifyCss()))
+    .pipe(gulpIf("*.css", autoprefixer({
+      browsers: ["last 3 versions"],
+      cascade: false
+    })))
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulp.dest("build"));
 });
