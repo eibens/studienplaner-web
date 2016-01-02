@@ -1,4 +1,5 @@
 Hyphenator.run();
+new WOW().init();
 
 (function () {
   var pageNav = $(".page .nav");
@@ -31,19 +32,6 @@ function updatePages() {
   var body = $("body");
   body.toggleClass("top", windowTop == documentTop);
   body.toggleClass("bottom", windowBottom == documentBottom);
-
-  $(".page").each(function (i, page) {
-
-    page = $(page);
-    var pageTop = page.offset().top;
-    var pageBottom = pageTop + page.outerHeight();
-
-    var pageVisible = !(windowBottom <= pageTop || pageBottom <= windowTop);
-    page.toggleClass("visible", pageVisible);
-    if (pageTop <= windowTop) {
-      $(page).addClass("visited");
-    }
-  });
 }
 
 updatePages();
