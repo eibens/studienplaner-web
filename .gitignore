@@ -1,6 +1,7 @@
 /.idea/
 /build/
 /node_modules/
-/web/bower_components/
-/web/css/
-/web/html/
+/src/bower_components/
+/src/css/
+/src/html/
+/src/old/

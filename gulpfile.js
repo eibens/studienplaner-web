@@ -16,7 +16,7 @@ var uncss = require("gulp-uncss");
 // Compile assets
 
 gulp.task("build-html", function (callback) {
-  gulp.src("web/jade/**/*.jade")
+  gulp.src("src/jade/**/*.jade")
     .pipe(jade())
     .pipe(gulp.dest("build"))
     .pipe(browserSync.reload({ stream: true }));
@@ -25,10 +25,10 @@ gulp.task("build-html", function (callback) {
 
 gulp.task("build-js", function () {
   gulp.src([
-    "web/bower_components/jquery/dist/jquery.min.js",
-    "web/bower_components/Hyphenator/Hyphenator.js",
-    "web/bower_components/wow/dist/wow.js",
-    "web/js/**/*.js"
+    "src/bower_components/jquery/dist/jquery.min.js",
+    "src/bower_components/Hyphenator/Hyphenator.js",
+    "src/bower_components/wow/dist/wow.js",
+    "src/js/**/*.js"
   ]).pipe(concat("scripts.js"))
     .pipe(uglify())
     .pipe(gulp.dest("build"))
@@ -43,14 +43,14 @@ gulp.task("build-js", function () {
 // in the "build" task.
 //
 //     .pipe(uncss({
-//       html: ["web/*.html"],
+//       html: ["src/*.html"],
 //       ignore: [".animated"]
 //     }))
 //
 gulp.task("build-css", function () {
   gulp.src([
-    "web/bower_components/wow/css/libs/animate.css",
-    "web/scss/**/*.scss"
+    "src/bower_components/wow/css/libs/animate.css",
+    "src/scss/**/*.scss"
   ]).pipe(gulpIf("*.scss", sass()))
     .pipe(concat("styles.css"))
     .pipe(autoprefixer({
@@ -64,7 +64,7 @@ gulp.task("build-css", function () {
 });
 
 gulp.task("build-images", function () {
-  gulp.src("web/images/**/*.+(png|jpg|jpeg|gif|svg)")
+  gulp.src("src/images/**/*.+(png|jpg|jpeg|gif|svg)")
     .pipe(cache(imagemin({
       interlaced: true
     })))
@@ -95,8 +95,8 @@ gulp.task("default", ["build"], function () {
       baseDir: "build"
     }
   });
-  gulp.watch("web/images/**", ["build-images"]);
-  gulp.watch("web/jade/**", ["build-html"]);
-  gulp.watch("web/js/**", ["build-js"]);
-  gulp.watch("web/scss/**", ["build-css"]);
+  gulp.watch("src/images/**", ["build-images"]);
+  gulp.watch("src/jade/**", ["build-html"]);
+  gulp.watch("src/js/**", ["build-js"]);
+  gulp.watch("src/scss/**", ["build-css"]);
 });
