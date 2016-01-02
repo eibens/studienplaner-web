@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync");
 var cache = require("gulp-cache");
+var csso = require("gulp-csso");
 var del = require("del");
 var gulpIf = require("gulp-if");
 var imagemin = require("gulp-imagemin");
@@ -32,6 +33,7 @@ gulp.task("build-html", function(){
       html: ["web/*.html"]
     })))
     .pipe(gulpIf("*.css", minifyCss()))
+    .pipe(gulpIf("*.css", csso()))
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulp.dest("build"));
 });
