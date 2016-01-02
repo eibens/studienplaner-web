@@ -9,6 +9,7 @@ var minifyCss = require("gulp-minify-css");
 var runSequence = require("run-sequence");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
+var uncss = require("gulp-uncss");
 var useref = require("gulp-useref");
 
 gulp.task("build-sass", function() {
@@ -23,11 +24,14 @@ gulp.task("build-sass", function() {
 gulp.task("build-html", function(){
   gulp.src("web/*.html")
     .pipe(useref())
-    .pipe(gulpIf("*.css", minifyCss()))
     .pipe(gulpIf("*.css", autoprefixer({
       browsers: ["last 3 versions"],
       cascade: false
     })))
+    .pipe(gulpIf("*.css", uncss({
+      html: ["web/*.html"]
+    })))
+    .pipe(gulpIf("*.css", minifyCss()))
     .pipe(gulpIf("*.js", uglify()))
     .pipe(gulp.dest("build"));
 });
