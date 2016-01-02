@@ -1,12 +1,14 @@
 
 ::selection {
-  background: rgba(0, 0, 0, 1);
+  background: black;
   color: white;
 }
+
 ::-moz-selection {
-  background: rgba(0, 0, 0, 1);
+  background: black;
   color: white;
 }
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -14,19 +16,24 @@ body {
   font-size: 22px;
   font-weight: 300;
 }
+
 h1, h2, h3, h4 {
   font-weight: 300;
   line-height: 1.3em;
 }
+
 h1 {
   font-size: 48px;
 }
+
 h2 {
   font-size: 28px;
 }
+
 b, strong {
   font-weight: normal;
 }
+
 a {
   color: #009688;
   text-decoration: none;
@@ -38,168 +45,140 @@ a {
   position: relative;
   float: left;
   color: white;
-}
-.page .nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 120px;
-  transition: background 0.5s;
-}
-.page .nav:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-.page .nav.prev {
-  top: 0;
-}
-.page .nav.next {
-  bottom: 0;
-}
-.page .nav .icon {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left:auto;
-  margin-right:auto;
-  display: block;
-  width: 56px;
-  height: 56px;
-  border: 6px solid white;
-  border-top: none;
-  border-left: none;
-  opacity: 0.3;
-  transition: transform 0.5s;
-}
-.page .nav.prev .icon {
-  transform: translateY(60px) rotate(-135deg);
-}
-.page .nav.prev:hover .icon {
-  transform: translateY(45px) rotate(-135deg);
-}
-.page .nav.next .icon {
-  transform: translateY(0px) rotate(45deg);
-}
-.page .nav.next:hover .icon {
-  transform: translateY(15px) rotate(45deg);
-}
-.page.light {
-  color: rgba(0, 0, 0, 0.7);
-}
-.page.light .nav:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-.page.light .nav .icon {
-  border-color: black;
-}
-
-.page .animate {
-  opacity: 0;
-  transition: 1s;
-}
-.page.visited .animate {
-  opacity: 1;
-}
-.page .delay-1 {
-  transition-delay: 0.5s;
-}
-.page .delay-2 {
-  transition-delay: 1s;
-}
-.page .delay-3 {
-  transition-delay: 1.5s;
-}
-.page .delay-4 {
-  transition-delay: 2s;
-}
-.page .delay-5 {
-  transition-delay: 2.5s;
-}
-
-.page section {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
   padding: 32px;
+  box-sizing: border-box;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
   text-align: center;
+
+  * {
+    margin: 16px 0;
+    clear: both;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    margin: 8px 0;
+  }
+
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    transition: background 0.5s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      width: 56px;
+      height: 56px;
+      border: 6px solid white;
+      border-top: none;
+      border-left: none;
+      opacity: 0.3;
+      transition: transform 0.5s;
+    }
+
+    &.prev {
+      top: 0;
+
+      &:hover {
+        .icon {
+          transform: translateY(45px) rotate(-135deg);
+        }
+      }
+
+      .icon {
+        transform: translateY(60px) rotate(-135deg);
+      }
+    }
+
+    &.next {
+      bottom: 0;
+
+      &:hover {
+        .icon {
+          transform: translateY(15px) rotate(45deg);
+        }
+      }
+
+      .icon {
+        transform: translateY(0px) rotate(45deg);
+      }
+    }
+  }
 }
-.page section h1,
-.page section img {
-  margin: 16px 0;
-  clear: both;
-}
-.page section p {
-  margin: 8px 0;
-}
-.page section > *:first-child {
-  margin-top: 0;
-}
-.page section > *:last-child {
-  margin-bottom: 0;
+
+@mixin page-light {
+  color: rgba(0, 0, 0, 0.7);
+
+  .nav {
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      border-color: black;
+    }
+  }
 }
 
 #homepage {
+  @include page-light;
   background: white;
-}
-#homepage img {
-  width: 280px;
-  transform: scale(0.7) rotate(-40deg);
-}
-#homepage.visited img {
-  transform: scale(1.0) rotate(0deg);
-  transition: transform 1s, opacity 1s;
-}
-#homepage img:hover {
-  transform: scale(1.05) rotate(10deg);
-  transition: transform 0.5s;
-}
-#homepage h1 {
-  line-height: 0.5em;
-}
-#homepage h1 b {
-  font-size: 50%;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.34);
-  font-weight: 300;
-}
 
+  &.visited {
+    img {
+      transform: scale(1.0) rotate(0deg);
+      transition: transform 1s;
+    }
+  }
+
+  img {
+    width: 280px;
+    transform: scale(0.7) rotate(-40deg);
+
+    &:hover {
+      transform: scale(1.05) rotate(10deg);
+      transition: transform 0.5s;
+    }
+  }
+
+  h1 {
+    line-height: 0.5em;
+
+    b {
+      font-size: 50%;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.34);
+      font-weight: 300;
+    }
+  }
+}
 
 #page2 {
   background: #009688;
 }
+
 #page3 {
   background: #8bc34a;
-}
-
-@media (max-width: 767px) {
-  .page .nav {
-    height: 80px;
-  }
-  .page .nav .icon {
-    width: 32px;
-    height: 32px;
-    border-width: 4px;
-  }
-  .page .nav.prev .icon {
-    transform: translateY(45px) rotate(-135deg);
-  }
-  .page .nav.prev:hover .icon {
-    transform: translateY(30px) rotate(-135deg);
-  }
-  .page .nav.next .icon {
-    transform: translateY(0px) rotate(45deg);
-  }
-  .page .nav.next:hover .icon {
-    transform: translateY(15px) rotate(45deg);
-  }
-
-  #homepage p br {
-    display: none;
-  }
 }
