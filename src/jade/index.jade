@@ -6,7 +6,7 @@ html(lang="en")
     title Title
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
     link(rel="stylesheet", href="styles.css")
-  body
+  body.hyphenate
     section#homepage.page
       img.wow.logoIn(src="images/logo-3d.png", alt="")
       h1.wow.fadeIn(data-wow-delay="0.5s")
@@ -19,14 +19,30 @@ html(lang="en")
         strong kostenlos
         | . #{''}
         a(href="http://mein.studienplaner.at/") Weiter zum Studienplaner »
-      a.nav.next.wow.fadeIn(data-wow-delay="2.0s", href="#page2")
+      a.nav.next.wow.fadeIn(data-wow-delay="2.0s", href="#features")
         span.icon
-    section#page2.page
+    section#features.page
       a.nav.prev(href="#homepage")
         span.icon
+      h2.wow.fadeIn Features
+      div
+        img.wow.slideInLeft(
+          data-wow-delay="0.5s"
+          src="images/screenshot.png"
+          alt="")
+        ul
+          li.wow.slideInRight(data-wow-delay="1.0s") Eintragen von Kursen und Noten
+          li.wow.slideInRight(data-wow-delay="1.2s") Filtern von Kursen nach Typ, Titel oder Note
+          li.wow.slideInRight(data-wow-delay="1.3s") Tagging-System um komplexe Abhängigkeiten abzubilden
+          li.wow.slideInRight(data-wow-delay="1.4s") Berechnung von ECTS-Summe und Notendurchschnitt
+          li.wow.slideInRight(data-wow-delay="1.5s") Semester Ansicht mit ECTS-Balkendiagramm
+          li.wow.slideInRight(data-wow-delay="1.6s") Import von fertigen Studienplänen
+          li.wow.slideInRight(data-wow-delay="1.7s") Laden und Speichern deiner Daten lokal im Web-Browser
+          li.wow.slideInRight(data-wow-delay="1.8s") Datenimport und -export im JSON Format
+          li.wow.slideInRight(data-wow-delay="1.9s") Auch offline verfügbar
       a.nav.next(href="#page3")
         span.icon
     section#page3.page
-      a.nav.prev(href="#page2")
+      a.nav.prev(href="#features")
         span.icon
     script(src="scripts.js")
