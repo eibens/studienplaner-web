@@ -72,6 +72,10 @@ $page-nav-height: 120px;
   color: white;
 }
 
+* {
+  -webkit-backface-visibility: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
