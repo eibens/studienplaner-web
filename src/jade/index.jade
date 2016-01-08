@@ -7,6 +7,18 @@ html(lang="en")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
     link(rel="stylesheet", href="styles.css")
   body.hyphenate
+    nav#toolbar.animated.fadeIn
+      a.dynamic.logo(href="#homepage")
+        img.dynamic(src="images/logo.svg", alt="")
+        span Studienplaner
+      ul
+        li
+          a(href="#features") Features
+        li
+          a(href="#feedback") Feedback
+        li
+          a(href="#team") Team
+      a.dynamic.quick-link(href="http://mein.studienplaner.at") Zum Studienplaner »
     section#homepage.page
       img.wow.logoIn(src="images/logo-3d.png", alt="")
       h1.wow.fadeIn(data-wow-delay="0.5s")
@@ -22,8 +34,6 @@ html(lang="en")
       a.nav.next.wow.fadeIn(data-wow-delay="2.0s", href="#features")
         span.icon
     section#features.page
-      a.nav.prev(href="#homepage")
-        span.icon
       h2.wow.fadeIn Features
       div
         img.wow.slideInLeft(
@@ -43,6 +53,4 @@ html(lang="en")
       a.nav.next(href="#page3")
         span.icon
     section#page3.page
-      a.nav.prev(href="#features")
-        span.icon
     script(src="scripts.js")

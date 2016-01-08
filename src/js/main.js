@@ -2,7 +2,7 @@ Hyphenator.run();
 new WOW().init();
 
 (function () {
-  var pageNav = $(".page .nav");
+  var pageNav = $("a[href^='#']");
 
   // Scroll smoothly when navigating between pages.
   pageNav.bind("click", function (event) {
