@@ -196,6 +196,9 @@ a {
       align-items: center;
       a {
         @include toolbar-button;
+        &.active:after {
+          background: rgba(0, 0, 0, 0.1);
+        }
       }
     }
   }
@@ -405,6 +408,6 @@ a {
   }
 }
 
-#page3 {
+#feedback {
   background: #8bc34a;
 }
