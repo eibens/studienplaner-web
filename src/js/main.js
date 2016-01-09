@@ -38,3 +38,36 @@ updatePages();
 $(window).scroll(function () {
   updatePages();
 });
+
+$(window).on("hashchange", function (event) {
+  console.log("hash");
+  event.preventDefault();
+});
+
+(function () {
+  var lastId;
+  var toolbar = $("#toolbar");
+  var menuItems = toolbar.find("li a");
+  var pages = $(".page");
+
+  $(window).scroll(function () {
+    var scrollTop = $(this).scrollTop();
+    var visitedPages = pages.filter(function(){
+      return $(this).offset().top <= scrollTop;
+    });
+
+    var activePage = $(visitedPages[visitedPages.length - 1]);
+    var id = activePage && activePage.length ? activePage[0].id : "";
+
+    if (lastId !== id) {
+      lastId = id;
+      menuItems.each(function (i, menuItem) {
+        menuItem = $(menuItem);
+        menuItem.removeClass("active");
+        if (menuItem.attr("href") == "#" + id) {
+          menuItem.addClass("active");
+        }
+      })
+    }
+  });
+})();
