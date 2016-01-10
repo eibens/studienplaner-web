@@ -13,11 +13,17 @@ var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
 
+function handleError(err) {
+  console.log(err);
+  this.emit('end');
+}
+
 // Compile assets
 
 gulp.task("build-html", function (callback) {
   gulp.src("src/jade/**/*.jade")
     .pipe(jade())
+    .on('error', handleError)
     .pipe(gulp.dest("build"))
     .pipe(browserSync.reload({ stream: true }));
   callback();
@@ -31,6 +37,7 @@ gulp.task("build-js", function () {
     "src/js/**/*.js"
   ]).pipe(concat("scripts.js"))
     .pipe(uglify())
+    .on('error', handleError)
     .pipe(gulp.dest("build"))
     .pipe(browserSync.reload({ stream: true }));
 });
@@ -52,6 +59,7 @@ gulp.task("build-css", function () {
     "src/bower_components/wow/css/libs/animate.css",
     "src/scss/**/*.scss"
   ]).pipe(gulpIf("*.scss", sass()))
+    .on('error', handleError)
     .pipe(concat("styles.css"))
     .pipe(autoprefixer({
       browsers: ["last 3 versions"],
