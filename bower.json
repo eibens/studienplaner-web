@@ -4,6 +4,6 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "Hyphenator": "~5.1.0",
-    "wow": "wowjs#~1.1.2"
+    "social-share-kit": "~1.0.6"
   }
 }

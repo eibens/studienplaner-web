@@ -33,7 +33,7 @@ gulp.task("build-js", function () {
   gulp.src([
     "src/bower_components/jquery/dist/jquery.min.js",
     "src/bower_components/Hyphenator/Hyphenator.js",
-    "src/bower_components/wow/dist/wow.js",
+    "src/bower_components/social-share-kit/dist/js/social-share-kit.js",
     "src/js/**/*.js"
   ]).pipe(concat("scripts.js"))
     .pipe(uglify())
@@ -56,7 +56,7 @@ gulp.task("build-js", function () {
 //
 gulp.task("build-css", function () {
   gulp.src([
-    "src/bower_components/wow/css/libs/animate.css",
+    "src/bower_components/social-share-kit/dist/css/social-share-kit.css",
     "src/scss/**/*.scss"
   ]).pipe(gulpIf("*.scss", sass()))
     .on('error', handleError)
