@@ -1,4 +1,5 @@
 Hyphenator.run();
+SocialShareKit.init();
 
 $(".no-js").removeClass("no-js");
 $("#feedback-email").val("feedback" + "@" + "studienplaner.at");

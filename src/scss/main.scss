@@ -153,6 +153,12 @@ img {
   }
 }
 
+.no-js {
+  .ssk-group {
+    display: none;
+  }
+}
+
 #home {
   margin-top: $toolbar-height;
   @include section-light(#f7f7f7);

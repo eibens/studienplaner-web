@@ -80,6 +80,12 @@ gulp.task("build-images", function () {
     .pipe(browserSync.reload({ stream: true }));
 });
 
+gulp.task("build-fonts", function () {
+  gulp.src("src/bower_components/social-share-kit/dist/fonts/*")
+    .pipe(gulp.dest("build/fonts"))
+    .pipe(browserSync.reload({ stream: true }));
+});
+
 // Clean project
 
 gulp.task("clean-fast", function (callback) {
@@ -95,7 +101,7 @@ gulp.task("clean", function (callback) {
 
 // Build and serve
 
-gulp.task("build", ["build-html", "build-css", "build-js", "build-images"]);
+gulp.task("build", ["build-html", "build-css", "build-js", "build-images", "build-fonts"]);
 
 gulp.task("default", ["build"], function () {
   browserSync({
