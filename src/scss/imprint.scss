@@ -1,0 +1,23 @@
+@import "variables";
+@import "mixins";
+
+#imprint {
+  @include section(#333);
+  margin-top: $toolbar-height;
+  p, h1 {
+    text-align: left;
+  }
+}
+#privacy {
+  @include section-light;
+  text-align: left;
+  h2 {
+    text-align: left;
+  }
+  p {
+    text-align: justify;
+    font-size: 14px;
+    line-height: 1.5em;
+    margin: 16px 0;
+  }
+}

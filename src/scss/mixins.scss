@@ -1,0 +1,57 @@
+@mixin shadow-elevation-2dp {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+@mixin shadow-elevation-6dp {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+  0 1px 18px 0 rgba(0, 0, 0, 0.12),
+  0 3px 5px -1px rgba(0, 0, 0, 0.4);
+}
+
+@mixin section($background) {
+  display: flex;
+  background: $background;
+  width: 100%;
+  padding: 64px 0;
+  float: left;
+  color: white;
+  h1, h2, h3, p, img, ul, section {
+    margin: 32px 0;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin section-light($background: white) {
+  @include section($background);
+  color: rgba(0, 0, 0, 0.67);
+  h1, h2, h3 {
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
+
+@mixin zoomable($small-width: 50%, $large-width: 100%) {
+  @include shadow-elevation-2dp;
+  width: $small-width;
+  cursor: zoom-in;
+  transition: 0.5s;
+  &:hover {
+    transform: translateY(-4px);
+    @include shadow-elevation-6dp;
+  }
+  &.zoomed {
+    width: $large-width;
+    cursor: zoom-out;
+  }
+}
+
+@mixin framed {
+  border: 8px solid white;
+  box-sizing: border-box;
+}

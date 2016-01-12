@@ -1,0 +1,138 @@
+@import "variables";
+@import "mixins";
+
+#home {
+  margin-top: $toolbar-height;
+  @include section-light(#f7f7f7);
+  img {
+    max-width: 280px;
+    transition: transform 0.5s;
+    &:hover {
+      transform: scale(1.05) rotate(10deg);
+    }
+  }
+  h1 {
+    b {
+      font-size: 50%;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.54);
+      font-weight: 300;
+    }
+  }
+}
+#preview {
+  @include section($studienplaner-green);
+  img {
+    @include zoomable;
+    @include framed;
+  }
+}
+#features {
+  @include section($studienplaner-teal);
+  text-align: left;
+  color: white;
+  ul {
+    flex: 1;
+    $line-height: 28px;
+    $list-spacing: 12px;
+    $bullet-width: 22px;
+    $bullet-height: 20px;
+    $bullet-spacing: 12px;
+    text-align: left;
+    line-height: $line-height;
+    list-style: none;
+    padding: 0;
+    li {
+      float: left;
+      width: 100%;
+      box-sizing: border-box;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      padding: $list-spacing $list-spacing $list-spacing
+      $bullet-width + $bullet-spacing + $list-spacing;
+      &:before {
+        float: left;
+        content: "";
+        width: $bullet-width;
+        height: $bullet-height;
+        margin-top: ($line-height - $bullet-height) / 2 - 1;
+        margin-right: $bullet-spacing;
+        margin-left: -($bullet-width + $bullet-spacing);
+        background: url("../images/icons/logo.svg") no-repeat left center;
+        background-size: 100% 100%;
+        transition: transform 0.2s;
+      }
+      &:hover:before {
+        transform: scale(1.2) rotate(60deg);
+      }
+      &:last-child {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+#feedback {
+  @include section($studienplaner-red);
+  text-align: left;
+  input {
+    width: 350px;
+    max-width: 100%;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    border: none;
+    text-align: center;
+    cursor: text;
+    border-radius: 4px;
+    color: white;
+    font-weight: 300;
+    font-size: 120%;
+    &:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+#team {
+  @include section(#222);
+  font-weight: 300;
+  font-size: 18px;
+  img {
+    @include zoomable(150px, 500px);
+    @include framed;
+    border-radius: 50%;
+  }
+  h2 {
+    line-height: 1.4em;
+  }
+  p {
+    text-align: justify;
+    color: rgba(255, 255, 255, 0.67);
+  }
+}
+#footer {
+  @include section(#111);
+}
+
+.no-js {
+  .ssk-group {
+    /* social media buttons require javascript */
+    display: none;
+  }
+  #team p {
+    /* justified text looks bad since no automatic hyphenation is available */
+    text-align: left;
+  }
+}
+
+@media (max-width: $page-narrow-width) {
+  #home {
+    img {
+      width: 70%;
+    }
+    p br {
+      display: none;
+    }
+  }
+  #feedback input {
+    width: auto;
+  }
+}
