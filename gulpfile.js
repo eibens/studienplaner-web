@@ -38,7 +38,7 @@ gulp.task("build-js", function () {
   ]).pipe(concat("scripts.js"))
     .pipe(uglify())
     .on('error', handleError)
-    .pipe(gulp.dest("build"))
+    .pipe(gulp.dest("build/js"))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -67,7 +67,7 @@ gulp.task("build-css", function () {
     }))
     .pipe(minifyCss())
     .pipe(csso())
-    .pipe(gulp.dest("build"))
+    .pipe(gulp.dest("build/css"))
     .pipe(browserSync.reload({ stream: true }));
 });
 
