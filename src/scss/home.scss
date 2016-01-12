@@ -73,7 +73,9 @@
 #feedback {
   @include section($studienplaner-red);
   text-align: left;
-  input {
+  .email {
+    display: block;
+    margin: auto;
     width: 350px;
     max-width: 100%;
     padding: 16px;
