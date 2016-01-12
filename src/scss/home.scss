@@ -19,6 +19,9 @@
       font-weight: 300;
     }
   }
+  .ssk {
+    cursor: pointer;
+  }
 }
 #preview {
   @include section($studienplaner-green);
