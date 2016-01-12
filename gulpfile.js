@@ -33,7 +33,7 @@ function handleError(err) {
 // Compile assets
 
 gulp.task("build-html", function (callback) {
-  gulp.src("src/jade/**/*.jade")
+  gulp.src("src/jade/*.jade")
     .pipe(gulpJade({
       jade: jade
     }))

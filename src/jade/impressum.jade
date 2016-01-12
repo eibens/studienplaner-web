@@ -1,62 +1,54 @@
-doctype html
-html.no-js(lang="de")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-    title Impressum
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
-    link(rel="stylesheet", href="css/styles.css")
-  body.hyphenate
-    nav#toolbar
-      a.logo(href="index.html")
-        img(src="images/logo.svg", alt="")
-        span Studienplaner
-    section#imprint
-      div.wrapper
-        :mymarkdown
-          # Impressum
+extends parts/page.jade
 
-          Für diese Website verantwortlicher Herausgeber:
+block head
+  title Impressum
 
-          **Lukas Eibensteiner**
-          <br>Lannergasse 7, 4020 Linz
-          <br>Österreich
-          <br>E-Mail: l.eibensteiner<b hidden>ignorethis</b>@gmail.com
-    section#privacy
-      div.wrapper
-        :mymarkdown
-          ## Datenschutzerklärung
+block body
+  section#imprint
+    div.wrapper
+      :mymarkdown
+        # Impressum
 
-          Diese Website benutzt Google Analytics, einen Webanalysedienst der
-          Google Inc. („Google"). Google Analytics verwendet sog. „Cookies",
-          Textdateien, die auf Ihrem Computer gespeichert werden und die eine
-          Analyse der Benutzung der Website durch Sie ermöglichen. Die durch
-          den Cookie erzeugten Informationen über Ihre Benutzung dieser Website
-          (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in
-          den USA übertragen und dort gespeichert.
+        Für diese Website verantwortlicher Herausgeber:
 
-          Google wird diese Informationen benutzen, um Ihre Nutzung der Website
-          auszuwerten, um Reports über die Websiteaktivitäten für die
-          Websitebetreiber zusammenzustellen und um weitere mit der
-          Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu
-          erbringen.
+        **Lukas Eibensteiner**
+        <br>Lannergasse 7, 4020 Linz
+        <br>Österreich
+        <br>E-Mail: l.eibensteiner<b hidden>ignorethis</b>@gmail.com
+  section#privacy
+    div.wrapper
+      :mymarkdown
+        ## Datenschutzerklärung
 
-          Auch wird Google diese Informationen gegebenenfalls an Dritte
-          übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte
-          diese Daten im Auftrag von Google verarbeiten. Google wird in keinem
-          Fall Ihre IP-Adresse mit anderen Daten von Google in Verbindung
-          bringen.
+        Diese Website benutzt Google Analytics, einen Webanalysedienst der
+        Google Inc. („Google"). Google Analytics verwendet sog. „Cookies",
+        Textdateien, die auf Ihrem Computer gespeichert werden und die eine
+        Analyse der Benutzung der Website durch Sie ermöglichen. Die durch
+        den Cookie erzeugten Informationen über Ihre Benutzung dieser Website
+        (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in
+        den USA übertragen und dort gespeichert.
 
-          Sie können die Installation der Cookies durch eine
-          entsprechende Einstellung Ihrer Browser Software verhindern; wir
-          weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls
-          nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können.
+        Google wird diese Informationen benutzen, um Ihre Nutzung der Website
+        auszuwerten, um Reports über die Websiteaktivitäten für die
+        Websitebetreiber zusammenzustellen und um weitere mit der
+        Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu
+        erbringen.
 
-          Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung
-          der über Sie erhobenen Daten durch Google in der zuvor beschriebenen
-          Art und Weise und zu dem zuvor benannten Zweck einverstanden. Der
-          Datenerhebung und -speicherung kann
-          <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">
-            jederzeit mit Wirkung für die Zukunft widersprochen werden
-          </a>
-    script(src="js/scripts.js")
+        Auch wird Google diese Informationen gegebenenfalls an Dritte
+        übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte
+        diese Daten im Auftrag von Google verarbeiten. Google wird in keinem
+        Fall Ihre IP-Adresse mit anderen Daten von Google in Verbindung
+        bringen.
+
+        Sie können die Installation der Cookies durch eine
+        entsprechende Einstellung Ihrer Browser Software verhindern; wir
+        weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls
+        nicht sämtliche Funktionen dieser Website vollumfänglich nutzen können.
+
+        Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung
+        der über Sie erhobenen Daten durch Google in der zuvor beschriebenen
+        Art und Weise und zu dem zuvor benannten Zweck einverstanden. Der
+        Datenerhebung und -speicherung kann
+        <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">
+          jederzeit mit Wirkung für die Zukunft widersprochen werden
+        </a>
