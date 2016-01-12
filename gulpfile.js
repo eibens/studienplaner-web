@@ -7,11 +7,23 @@ var csso = require("gulp-csso");
 var del = require("del");
 var gulpIf = require("gulp-if");
 var imagemin = require("gulp-imagemin");
-var jade = require("gulp-jade");
+var jade = require("jade");
+var gulpJade = require("gulp-jade");
 var minifyCss = require("gulp-minify-css");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
+
+// Custom Jade filters
+
+var markdown = require("markdown-it")({
+  html: true
+});
+jade.filters.mymarkdown = function (text) {
+  return markdown.render(text);
+};
+
+// Error handling
 
 function handleError(err) {
   console.log(err);
@@ -22,7 +34,9 @@ function handleError(err) {
 
 gulp.task("build-html", function (callback) {
   gulp.src("src/jade/**/*.jade")
-    .pipe(jade())
+    .pipe(gulpJade({
+      jade: jade
+    }))
     .on('error', handleError)
     .pipe(gulp.dest("build"))
     .pipe(browserSync.reload({ stream: true }));
