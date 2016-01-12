@@ -2,14 +2,14 @@
 @import "mixins";
 
 #imprint {
-  @include section(#333);
+  @include section-light;
   margin-top: $toolbar-height;
   p, h1 {
     text-align: left;
   }
 }
 #privacy {
-  @include section-light;
+  @include section(#333);
   text-align: left;
   h2 {
     text-align: left;
