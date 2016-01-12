@@ -1,71 +1,70 @@
-extends parts/page.jade
+extends templates/page.jade
+include mixins/section.jade
+include mixins/zoom-image.jade
 
 block head
   title Studienplaner
 
 block body
-  section#home
-    div.wrapper
+  +section("home")
+    :mymarkdown
+      ![](images/logo-3d.png)
+
+      # Studienplaner <b>Beta</b>
+
+      Verwalte deine Kurse, tracke deine Noten, plane dein Semester.
+      <br>Studienplaner ist **kostenlos**.
+      [Weiter zum Studienplaner »](http://mein.studienplaner.at)
+    section.ssk-group
+      a.ssk.ssk-facebook(href="")
+      a.ssk.ssk-google-plus(href="")
+      a.ssk.ssk-twitter(href="")
+      a.ssk.ssk-email(href="")
+    small
       :mymarkdown
-        ![](images/logo-3d.png)
+        [Datenschutzerklärung](impressum.html)
 
-        # Studienplaner <b>Beta</b>
+  +section("preview")
+    +zoom-image("images/screenshot.png")
 
-        Verwalte deine Kurse, tracke deine Noten, plane dein Semester.
-        <br>Studienplaner ist **kostenlos**.
-        [Weiter zum Studienplaner »](http://mein.studienplaner.at)
-      section.ssk-group
-        a.ssk.ssk-facebook(href="")
-        a.ssk.ssk-google-plus(href="")
-        a.ssk.ssk-twitter(href="")
-        a.ssk.ssk-email(href="")
-      small
-        :mymarkdown
-          [Datenschutzerklärung](impressum.html)
-  section#preview
-    div.wrapper
-      a.zoomable(href="images/screenshot.png", target="_blank")
-        img(src="images/screenshot.png", alt="")
-  section#features
-    div.wrapper
-      :mymarkdown
-        ## Features
+  +section("features")
+    :mymarkdown
+      ## Features
 
-        - Eintragen von Kursen und Noten
-        - Filtern von Kursen nach Typ, Titel oder Note
-        - Tagging-System um komplexe Abhängigkeiten abzubilden
-        - Berechnung von ECTS-Summe und Notendurchschnitt
-        - Semester Ansicht mit ECTS-Balkendiagramm
-        - Import von fertigen Studienplänen
-        - Laden und Speichern deiner Daten lokal im Web-Browser
-        - Datenimport und -export im JSON Format
-        - Auch offline verfügbar
-  section#feedback
-    div.wrapper
-      :mymarkdown
-        ## Feedback
+      - Eintragen von Kursen und Noten
+      - Filtern von Kursen nach Typ, Titel oder Note
+      - Tagging-System um komplexe Abhängigkeiten abzubilden
+      - Berechnung von ECTS-Summe und Notendurchschnitt
+      - Semester Ansicht mit ECTS-Balkendiagramm
+      - Import von fertigen Studienplänen
+      - Laden und Speichern deiner Daten lokal im Web-Browser
+      - Datenimport und -export im JSON Format
+      - Auch offline verfügbar
 
-        Fragen, Wünsche und Kritik bitte an...
-      input#feedback-email(disabled, value="Bitte aktiviere JavaScript!")
-  section#team
-    div.wrapper
-      a.zoomable(href="images/lukas-eibensteiner.jpg", target="_blank")
-        img(src="images/lukas-eibensteiner.jpg", alt="Lukas Eibensteiner")
-      :mymarkdown
-        ## Hallo, mein Name ist <br> **Lukas Eibensteiner**
+  +section("feedback")
+    :mymarkdown
+      ## Feedback
 
-        Seit 2012 studiere ich Medieninformatik an der Technischen Universität Wien
-        und arbeite nebenbei als Web-Entwickler bei [bisskonzept media](http://bisskonzept.at).
-        Software-Entwicklung ist schon seit Jahren eine meiner großen Leidenschaften.
-        Ich bin immer auf der Suche nach interessanten Projekten, um
-        meine Fähigkeiten auf die Probe zu stellen.
+      Fragen, Wünsche und Kritik bitte an...
+    input#feedback-email(disabled, value="Bitte aktiviere JavaScript!")
 
-        Als Student liegen mir Probleme im Studenten-Alltag besonders
-        nahe. Speziell am Anfang und am Ende meines Bachelorstudiums merkte
-        ich, wie schwierig es ist, den Überblick über
-        Voraussetzungen, Abhängigkeiten und abgeschlossene Kurse zu behalten.
-        Aus diesem Grund begann ich im August 2015 die Arbeit an dieser Website.
-        Inzwischen bin ich selbst ein zufriedener Nutzer und hoffe auch
-        anderen Studenten damit helfen zu können.
+  +section("team")
+    +zoom-image("images/lukas-eibensteiner.jpg", "Lukas Eibensteiner")
+    :mymarkdown
+      ## Hallo, mein Name ist <br> **Lukas Eibensteiner**
 
-        *Vielen Dank für dein Interesse!*
+      Seit 2012 studiere ich Medieninformatik an der Technischen Universität Wien
+      und arbeite nebenbei als Web-Entwickler bei [bisskonzept media](http://bisskonzept.at).
+      Software-Entwicklung ist schon seit Jahren eine meiner großen Leidenschaften.
+      Ich bin immer auf der Suche nach interessanten Projekten, um
+      meine Fähigkeiten auf die Probe zu stellen.
+
+      Als Student liegen mir Probleme im Studenten-Alltag besonders
+      nahe. Speziell am Anfang und am Ende meines Bachelorstudiums merkte
+      ich, wie schwierig es ist, den Überblick über
+      Voraussetzungen, Abhängigkeiten und abgeschlossene Kurse zu behalten.
+      Aus diesem Grund begann ich im August 2015 die Arbeit an dieser Website.
+      Inzwischen bin ich selbst ein zufriedener Nutzer und hoffe auch
+      anderen Studenten damit helfen zu können.
+
+      *Vielen Dank für dein Interesse!*
