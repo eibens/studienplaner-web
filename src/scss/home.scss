@@ -134,7 +134,10 @@
       display: none;
     }
   }
-  #feedback input {
-    width: auto;
+  #feedback {
+    .email {
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 }
