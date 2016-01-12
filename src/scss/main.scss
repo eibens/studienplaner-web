@@ -89,7 +89,6 @@ body {
   color: $secondary-text-color;
   font-weight: 300;
   min-width: $min-width;
-  background: #111;
 }
 h1 {
   font-size: 220%;
@@ -275,14 +274,14 @@ img {
 }
 
 #imprint {
+  @include section(#333);
   margin-top: $toolbar-height;
-  @include section-light;
   p, h1 {
     text-align: left;
   }
 }
 #privacy {
-  @include section(#333);
+  @include section-light;
   text-align: left;
   h2 {
     text-align: left;
