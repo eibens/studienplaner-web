@@ -36,6 +36,16 @@
   }
 }
 
+@mixin section-text($background) {
+  @include section($background);
+  p {
+    text-align: justify;
+    font-size: 85%;
+    line-height: 1.5em;
+    margin: 1.2em 0;
+  }
+}
+
 @mixin zoomable($small-width: 50%, $large-width: 100%) {
   @include shadow-elevation-2dp;
   width: $small-width;

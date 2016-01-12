@@ -9,15 +9,12 @@
   }
 }
 #privacy {
-  @include section(#333);
+  @include section-text(#222);
   text-align: left;
   h2 {
     text-align: left;
   }
   p {
-    text-align: justify;
-    font-size: 14px;
-    line-height: 1.5em;
-    margin: 16px 0;
+    color: rgba(255, 255, 255, 0.67);
   }
 }

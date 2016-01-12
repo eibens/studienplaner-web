@@ -97,19 +97,13 @@
   }
 }
 #team {
-  @include section(#222);
-  font-weight: 300;
-  font-size: 18px;
+  @include section-text(#222);
   img {
     @include zoomable(150px, 500px);
     @include framed;
     border-radius: 50%;
   }
-  h2 {
-    line-height: 1.4em;
-  }
   p {
-    text-align: justify;
     color: rgba(255, 255, 255, 0.67);
   }
 }
