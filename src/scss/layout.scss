@@ -18,6 +18,10 @@ body {
   color: rgba(0, 0, 0, 0.54);
   font-weight: 300;
   min-width: $page-min-width;
+  @include narrow {
+    font-size: 18px;
+    line-height: 1.5em;
+  }
 }
 h1 {
   font-size: 220%;
@@ -46,6 +50,11 @@ img {
   margin: auto;
   width: 90%;
   max-width: 800px;
+  @include narrow {
+    padding-left: 32px;
+    padding-right: 32px;
+    width: 100%;
+  }
 }
 
 #toolbar {
@@ -81,19 +90,5 @@ img {
     float: right;
     line-height: $toolbar-height;
     margin-right: $toolbar-padding;
-  }
-}
-
-@media (max-width: $page-narrow-width) {
-
-  .wrapper {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 100%;
-  }
-
-  body {
-    font-size: 18px;
-    line-height: 1.5em;
   }
 }

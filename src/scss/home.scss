@@ -10,6 +10,9 @@
     &:hover {
       transform: scale(1.05) rotate(10deg);
     }
+    @include narrow {
+      width: 70%;
+    }
   }
   h1 {
     b {
@@ -17,6 +20,11 @@
       text-transform: uppercase;
       color: rgba(0, 0, 0, 0.54);
       font-weight: 300;
+    }
+  }
+  p br {
+    @include narrow {
+      display: none;
     }
   }
   .ssk {
@@ -97,6 +105,10 @@
     &:hover {
       background: rgba(0, 0, 0, 0.15);
     }
+    @include narrow {
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 }
 #team {
@@ -122,22 +134,5 @@
   #team p {
     /* justified text looks bad since no automatic hyphenation is available */
     text-align: left;
-  }
-}
-
-@media (max-width: $page-narrow-width) {
-  #home {
-    img {
-      width: 70%;
-    }
-    p br {
-      display: none;
-    }
-  }
-  #feedback {
-    .email {
-      width: 100%;
-      box-sizing: border-box;
-    }
   }
 }
