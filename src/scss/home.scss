@@ -23,6 +23,9 @@
     cursor: pointer;
   }
 }
+#disclaimer {
+  @include section(#222);
+}
 #preview {
   @include section($studienplaner-green);
   img {
