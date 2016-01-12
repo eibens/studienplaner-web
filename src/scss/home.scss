@@ -24,7 +24,7 @@
   }
 }
 #disclaimer {
-  @include section(#222);
+  @include section-light(#e7e7e7);
 }
 #preview {
   @include section($studienplaner-green);
