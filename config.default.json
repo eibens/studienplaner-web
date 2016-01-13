@@ -1,0 +1,8 @@
+{
+  "ftp": {
+    "host": "example.com",
+    "user": "user",
+    "password": "root",
+    "directory": "studienplaner-web"
+  }
+}

@@ -6,6 +6,7 @@ var concat = require("gulp-concat");
 var csso = require("gulp-csso");
 var del = require("del");
 var gulpIf = require("gulp-if");
+var gulpUtil = require("gulp-util");
 var imagemin = require("gulp-imagemin");
 var jade = require("jade");
 var gulpJade = require("gulp-jade");
@@ -13,6 +14,7 @@ var minifyCss = require("gulp-minify-css");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
+var ftp = require("vinyl-ftp");
 
 // Custom Jade filters
 
@@ -113,7 +115,7 @@ gulp.task("clean", function (callback) {
   callback();
 });
 
-// Build and serve
+// Build, serve and deploy
 
 gulp.task("build", ["build-html", "build-css", "build-js", "build-images", "build-fonts"]);
 
@@ -127,4 +129,18 @@ gulp.task("default", ["build"], function () {
   gulp.watch("src/jade/**", ["build-html"]);
   gulp.watch("src/js/**", ["build-js"]);
   gulp.watch("src/scss/**", ["build-css"]);
+});
+
+gulp.task("deploy", ["build"], function () {
+  var config = require("./config.json");
+  var conn = ftp.create({
+    host:     config.ftp.host,
+    user:     config.ftp.user,
+    password: config.ftp.password,
+    parallel: 3,
+    log:      gulpUtil.log
+  });
+  gulp.src("build/**/*", { base: "build", buffer: false } )
+    .pipe(conn.newer(config.ftp.directory))
+    .pipe(conn.dest(config.ftp.directory));
 });
