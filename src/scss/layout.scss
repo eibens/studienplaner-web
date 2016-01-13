@@ -51,8 +51,8 @@ img {
   width: 90%;
   max-width: 800px;
   @include narrow {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
     width: 100%;
   }
 }
