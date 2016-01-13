@@ -1,5 +1,6 @@
+include ../mixins/meta-description
+include ../mixins/meta-image
+
 meta(itemprop="name", content="Studienplaner")
-meta(itemprop="description", content="Verwalte deine Kurse, tracke deine " +
-  "Noten, plane dein Semester. Studienplaner hilft dir deinen " +
-  "Studienfortschritt stets im Auge zu behalten.")
-meta(itemprop="image", content="#{web.baseUrl}/images/social.png")
++meta-description(itemprop="description")
++meta-image(itemprop="image")
