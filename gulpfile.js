@@ -16,8 +16,19 @@ var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
 var ftp = require("vinyl-ftp");
 
-// Custom Jade filters
+// Load custom config
+function loadConfig() {
+  try {
+    return require("./config.json");
+  }
+  catch(ex) {
+    if (ex.code === 'MODULE_NOT_FOUND') {
+      return require("./config.default.json");
+    }
+  }
+}
 
+// Custom Jade filter
 var markdown = require("markdown-it")({
   html: true
 });
@@ -26,7 +37,6 @@ jade.filters.mymarkdown = function (text) {
 };
 
 // Error handling
-
 function handleError(err) {
   console.log(err);
   this.emit('end');
@@ -37,7 +47,8 @@ function handleError(err) {
 gulp.task("build-html", function (callback) {
   gulp.src("src/jade/*.jade")
     .pipe(gulpJade({
-      jade: jade
+      jade: jade,
+      data: loadConfig()
     }))
     .on('error', handleError)
     .pipe(gulp.dest("build"))
@@ -136,7 +147,7 @@ gulp.task("default", ["build"], function () {
 });
 
 gulp.task("deploy", ["build"], function () {
-  var config = require("./config.json");
+  var config = loadConfig();
   var conn = ftp.create({
     host:     config.ftp.host,
     user:     config.ftp.user,
