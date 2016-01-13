@@ -1,4 +1,11 @@
 {
+  "web": {
+    "appUrl": "http://example.com/studienplaner",
+    "facebook": {
+      "appId": "",
+      "url": "http://example.com/studienplaner-web"
+    }
+  },
   "ftp": {
     "host": "example.com",
     "user": "user",
