@@ -45,7 +45,7 @@ gulp.task("build-html", function (callback) {
   callback();
 });
 
-gulp.task("build-js", function () {
+gulp.task("build-js", function (callback) {
   gulp.src([
     "src/bower_components/jquery/dist/jquery.min.js",
     "src/bower_components/Hyphenator/Hyphenator.js",
@@ -56,6 +56,7 @@ gulp.task("build-js", function () {
     .on('error', handleError)
     .pipe(gulp.dest("build/js"))
     .pipe(browserSync.reload({ stream: true }));
+  callback();
 });
 
 // FIXME: Pipe through Uncss
@@ -70,7 +71,7 @@ gulp.task("build-js", function () {
 //       ignore: [".animated"]
 //     }))
 //
-gulp.task("build-css", function () {
+gulp.task("build-css", function (callback) {
   gulp.src([
     "src/bower_components/social-share-kit/dist/css/social-share-kit.css",
     "src/scss/**/*.scss"
@@ -85,21 +86,24 @@ gulp.task("build-css", function () {
     .pipe(csso())
     .pipe(gulp.dest("build/css"))
     .pipe(browserSync.reload({ stream: true }));
+  callback();
 });
 
-gulp.task("build-images", function () {
+gulp.task("build-images", function (callback) {
   gulp.src("src/images/**/*.+(png|jpg|jpeg|gif|svg)")
     .pipe(cache(imagemin({
       interlaced: true
     })))
     .pipe(gulp.dest("build/images"))
     .pipe(browserSync.reload({ stream: true }));
+  callback();
 });
 
-gulp.task("build-fonts", function () {
+gulp.task("build-fonts", function (callback) {
   gulp.src("src/bower_components/social-share-kit/dist/fonts/*")
     .pipe(gulp.dest("build/fonts"))
     .pipe(browserSync.reload({ stream: true }));
+  callback();
 });
 
 // Clean project
@@ -141,6 +145,5 @@ gulp.task("deploy", ["build"], function () {
     log:      gulpUtil.log
   });
   gulp.src("build/**/*", { base: "build", buffer: false } )
-    .pipe(conn.newer(config.ftp.directory))
     .pipe(conn.dest(config.ftp.directory));
 });
