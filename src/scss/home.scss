@@ -39,6 +39,19 @@
   img {
     @include zoomable;
     @include framed;
+    &.narrow {
+      @include zoomable(30%);
+      display: none;
+    }
+    @include narrow {
+      max-width: 400px;
+      &.wide {
+        display: none;
+      }
+      &.narrow {
+        display: inline-block;
+      }
+    }
   }
 }
 #features {
