@@ -2,7 +2,8 @@
   "web": {
     "baseUrl": "http://example.com/studienplaner-web",
     "appUrl": "http://example.com/studienplaner",
-    "facebookId": ""
+    "facebookId": "",
+    "googleAnalyticsId": "UA-XXXXXXXX-X"
   },
   "ftp": {
     "host": "example.com",
