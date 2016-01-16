@@ -117,6 +117,13 @@ gulp.task("build-fonts", function (callback) {
   callback();
 });
 
+gulp.task("build-assets", function (callback) {
+  gulp.src("src/assets/**/*")
+    .pipe(gulp.dest("build/"))
+    .pipe(browserSync.reload({ stream: true }));
+  callback();
+});
+
 // Clean project
 
 gulp.task("clean-fast", function (callback) {
@@ -132,7 +139,7 @@ gulp.task("clean", function (callback) {
 
 // Build, serve and deploy
 
-gulp.task("build", ["build-html", "build-css", "build-js", "build-images", "build-fonts"]);
+gulp.task("build", ["build-html", "build-css", "build-js", "build-images", "build-fonts", "build-assets"]);
 
 gulp.task("default", ["build"], function () {
   browserSync({
@@ -144,6 +151,7 @@ gulp.task("default", ["build"], function () {
   gulp.watch("src/jade/**", ["build-html"]);
   gulp.watch("src/js/**", ["build-js"]);
   gulp.watch("src/scss/**", ["build-css"]);
+  gulp.watch("src/assets/**/*", ["build-assets"]);
 });
 
 gulp.task("deploy", ["build"], function () {
