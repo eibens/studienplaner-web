@@ -1,7 +1,7 @@
 @import "variables";
 @import "mixins";
 
-#home {
+#section-home {
   @include section-light(#f7f7f7);
   img {
     max-width: 280px;
@@ -30,10 +30,10 @@
     cursor: pointer;
   }
 }
-#disclaimer {
+#section-disclaimer {
   @include section-light(#e7e7e7);
 }
-#preview {
+#section-preview {
   @include section($studienplaner-green);
   img {
     @include zoomable;
@@ -53,7 +53,7 @@
     }
   }
 }
-#features {
+#section-features {
   @include section($studienplaner-teal);
   text-align: left;
   color: white;
@@ -96,7 +96,7 @@
     }
   }
 }
-#feedback {
+#section-feedback {
   @include section($studienplaner-red);
   text-align: left;
   .email {
@@ -123,7 +123,7 @@
     }
   }
 }
-#team {
+#section-team {
   @include section-text(#222);
   img {
     @include zoomable(150px, 500px);

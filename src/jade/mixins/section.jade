@@ -1,4 +1,5 @@
 mixin section(id)
-  section(id=id)
+  section(id="section-" + id)
+    a.anchor(id=id)
     div.wrapper
       block

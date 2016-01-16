@@ -22,11 +22,16 @@
   display: flex;
   background: $background;
   width: 100%;
-  padding: 64px 0;
   float: left;
   color: white;
-  @include narrow {
-    padding: 32px 0;
+  .anchor {
+    margin-top: -$toolbar-height;
+  }
+  .wrapper {
+    padding: 64px 0;
+    @include narrow {
+      padding: 32px 0;
+    }
   }
   h1, h2, h3, p, img, ul, section {
     margin: 32px 0;

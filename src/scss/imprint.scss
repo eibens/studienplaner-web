@@ -1,13 +1,13 @@
 @import "variables";
 @import "mixins";
 
-#imprint {
+#section-imprint {
   @include section-light(#f7f7f7);
   p, h1 {
     text-align: left;
   }
 }
-#privacy {
+#section-privacy {
   @include section-text(#222);
   text-align: left;
   h2 {
