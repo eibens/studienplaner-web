@@ -110,3 +110,7 @@ img {
 .no-js #toolbar.dynamic {
   height: $toolbar-height;
 }
+
+#footer {
+  @include section(#111);
+}
