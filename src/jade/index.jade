@@ -1,6 +1,10 @@
 extends templates/page.jade
 include mixins/section.jade
+include mixins/toolbar.jade
 include mixins/zoom-image.jade
+
+block toolbar
+  +toolbar(class="dynamic")
 
 block head
   title Studienplaner

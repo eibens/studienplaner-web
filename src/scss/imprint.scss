@@ -3,7 +3,6 @@
 
 #imprint {
   @include section-light(#f7f7f7);
-  margin-top: $toolbar-height;
   p, h1 {
     text-align: left;
   }

@@ -2,7 +2,6 @@
 @import "mixins";
 
 #home {
-  margin-top: $toolbar-height;
   @include section-light(#f7f7f7);
   img {
     max-width: 280px;

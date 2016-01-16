@@ -1,4 +1,5 @@
 include ../mixins/google-analytics
+include ../mixins/toolbar
 
 doctype html
 html.no-js(lang="de", itemscope, itemtype="http://schema.org/Other")
@@ -8,11 +9,8 @@ html.no-js(lang="de", itemscope, itemtype="http://schema.org/Other")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
     link(rel="stylesheet", href="css/styles.css")
   body.hyphenate
-    nav#toolbar
-      a.logo(href="index.html")
-        img(src="images/logo.svg", alt="")
-        span Studienplaner
-      a.quick-link(href=web.appUrl) Jetzt benutzen »
+    block toolbar
+      +toolbar
     block body
     footer#footer
       div.wrapper
