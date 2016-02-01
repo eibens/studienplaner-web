@@ -61,9 +61,6 @@ img {
   float: left;
   width: 100%;
   height: $toolbar-height;
-  &.dynamic {
-    height: 0;
-  }
   .bar {
     $toolbar-logo-size: 48px;
     $toolbar-padding: ($toolbar-height - $toolbar-logo-size) / 2;
@@ -102,13 +99,8 @@ img {
   }
 }
 
-.top #toolbar.dynamic .bar {
-  opacity: 0;
-  transform: translateY(-$toolbar-height);
-}
-
-.no-js #toolbar.dynamic {
-  height: $toolbar-height;
+.top #toolbar .bar {
+  box-shadow: none;
 }
 
 #footer {
