@@ -5,6 +5,7 @@ var cache = require("gulp-cache");
 var concat = require("gulp-concat");
 var csso = require("gulp-csso");
 var del = require("del");
+var ghPages = require("gulp-gh-pages");
 var gulpIf = require("gulp-if");
 var gulpUtil = require("gulp-util");
 var imagemin = require("gulp-imagemin");
@@ -165,4 +166,9 @@ gulp.task("deploy", ["build"], function () {
   });
   gulp.src("build/**/*", { base: "build", buffer: false } )
     .pipe(conn.dest(config.ftp.directory));
+});
+
+gulp.task("deploy-gh-pages", function () {
+  return gulp.src("build/**/*")
+    .pipe(ghPages());
 });
