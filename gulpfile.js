@@ -7,7 +7,6 @@ var csso = require("gulp-csso");
 var del = require("del");
 var ghPages = require("gulp-gh-pages");
 var gulpIf = require("gulp-if");
-var gulpUtil = require("gulp-util");
 var imagemin = require("gulp-imagemin");
 var jade = require("jade");
 var gulpJade = require("gulp-jade");
@@ -15,7 +14,6 @@ var minifyCss = require("gulp-minify-css");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var uncss = require("gulp-uncss");
-var ftp = require("vinyl-ftp");
 
 // Load custom config
 function loadConfig() {
@@ -153,19 +151,6 @@ gulp.task("default", ["build"], function () {
   gulp.watch("src/js/**", ["build-js"]);
   gulp.watch("src/scss/**", ["build-css"]);
   gulp.watch("src/assets/**/*", ["build-assets"]);
-});
-
-gulp.task("deploy", function () {
-  var config = loadConfig();
-  var conn = ftp.create({
-    host:     config.ftp.host,
-    user:     config.ftp.user,
-    password: config.ftp.password,
-    parallel: 3,
-    log:      gulpUtil.log
-  });
-  gulp.src("build/**/*", { base: "build", buffer: false } )
-    .pipe(conn.dest(config.ftp.directory));
 });
 
 gulp.task("deploy-gh-pages", function () {

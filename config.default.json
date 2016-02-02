@@ -4,11 +4,5 @@
     "appUrl": "http://example.com/studienplaner",
     "facebookId": "",
     "googleAnalyticsId": "UA-XXXXXXXX-X"
-  },
-  "ftp": {
-    "host": "example.com",
-    "user": "user",
-    "password": "root",
-    "directory": "studienplaner-web"
   }
 }
