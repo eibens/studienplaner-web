@@ -1,4 +1,4 @@
-mixin meta-description()
+mixin meta-description(short)
   meta&attributes(attributes)(content="Verwalte deine Kurse, tracke deine " +
-    "Noten, plane dein Semester. Studienplaner hilft dir deinen " +
-    "Studienfortschritt im Auge zu behalten.")
+    "Noten, plane dein Semester." +
+    (short ? "" : " Studienplaner hilft dir deinen Studienfortschritt im Auge zu behalten."))
