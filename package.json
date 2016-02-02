@@ -1,18 +1,5 @@
 {
-  "name": "studienplaner-web",
-  "version": "0.0.0",
-  "description": "Website presenting the Studienplaner app project.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lukas-eibensteiner/studienplaner-web.git"
-  },
-  "author": "Lukas Eibensteiner <l.eibensteiner@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lukas-eibensteiner/studienplaner-web/issues",
-    "email": "l.eibensteiner@gmail.com"
-  },
-  "homepage": "https://studienplaner.at",
+  "private": true,
   "devDependencies": {
     "browser-sync": "^2.10.1",
     "del": "^2.2.0",
