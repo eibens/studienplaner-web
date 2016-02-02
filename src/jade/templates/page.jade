@@ -8,6 +8,7 @@ html.no-js(lang="de", itemscope, itemtype="http://schema.org/WebApplication")
     block head
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic")
     link(rel="stylesheet", href="css/styles.css")
+    +google-analytics(web.googleAnalyticsId)
   body.hyphenate
     block toolbar
       +toolbar
@@ -16,4 +17,3 @@ html.no-js(lang="de", itemscope, itemtype="http://schema.org/WebApplication")
       div.wrapper
         a(href="impressum.html") Impressum &amp; Datenschutzerklärung
     script(src="js/scripts.js")
-    +google-analytics(web.googleAnalyticsId)
