@@ -155,7 +155,7 @@ gulp.task("default", ["build"], function () {
   gulp.watch("src/assets/**/*", ["build-assets"]);
 });
 
-gulp.task("deploy", ["build"], function () {
+gulp.task("deploy", function () {
   var config = loadConfig();
   var conn = ftp.create({
     host:     config.ftp.host,
