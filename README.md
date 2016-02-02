@@ -1,32 +1,17 @@
+![Studienplaner](docs/logo.png)
+
 # Studienplaner Web
 
-Website for the [Studienplaner](https://github.com/lukas-eibensteiner/studienplaner)
-course and grade tracking application.
+> Website for the [Studienplaner](http://github.com/lukas-eibensteiner/studienplaner)
+> course and grade tracking web app.
 
-## Installation
+*Note: Currently this website is only available in German.*
 
-### Install Dependencies
+## Demo
 
-    npm install
-    bower install
+[See this website in action.](http://studienplaner.at)
 
-### Serve Project
+# Related Repositories
 
-Opens the website in the browser and refreshes automatically when files change:
-
-    gulp
-
-### Build Project
-
-Compiles all scripts and assets and outputs them to the `build` directory:
-
-    gulp build
-
-### Deploy to Web-Server
-
-Builds the project and copies all files to a specified FTP server:
-
-    gulp deploy
-
-In order to enable `gulp deploy` copy the `config.default.json` file, rename it 
-to `config.json` and replace the default FTP credentials with custom values.
+- [lukas-eibensteiner/studienplaner](https://github.com/lukas-eibensteiner/studienplaner)
+(Studienplaner web app)
